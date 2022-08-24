@@ -1,0 +1,51 @@
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+class Config(object):
+    COGNITO_REGION = os.getenv('AWS_REGION')
+    COGNITO_USERPOOL_ID = os.getenv('LSO_APP_USERPOOL_ID')
+    COGNITO_APP_CLIENT_ID = os.getenv('LSO_APP_CLIENT_ID')
+    COGNITO_JWT_HEADER_NAME = 'X-LSO-Authorization'
+    COGNITO_JWT_HEADER_PREFIX = 'Bearer'
+    COGNITO_CHECK_TOKEN_EXPIRATION = True  # For the development and testing purpose only
+
+    APP_DATABASE_SERVER = os.getenv('APP_DATABASE_SERVER')
+    APP_DATABASE = os.getenv('APP_DATABASE_NAME')
+    APP_DATABASE_USER = os.getenv('APP_DATABASE_USER_ID')
+    APP_DATABASE_PASS = os.getenv('APP_DATABASE_USER_PASS')
+
+    OPS_DATABASE_SERVER = os.getenv('OPS_DATABASE_SERVER')
+    OPS_DATABASE = os.getenv('OPS_DATABASE_NAME')
+    OPS_DATABASE_USER = os.getenv('OPS_DATABASE_USER_ID')
+    OPS_DATABASE_PASS = os.getenv('OPS_DATABASE_USER_PASS')
+
+    BARCODE_TRACK_LAMBDA_API_KEY = os.getenv('BARCODE_TRACK_LAMBDA_API_KEY')
+    BARCODE_TRACK_URL = os.getenv('BARCODE_TRACK_URL')
+
+    WEB_FLOW_COLLECTION_ID = os.getenv('WEB_FLOW_COLLECTION_ID')
+    WEB_FLOW_API_TOKEN = os.getenv('WEB_FLOW_API_TOKEN')
+
+    BARCODE_GENERATION_LAMBDA_API_KEY = os.getenv('BARCODE_GENERATION_LAMBDA_API_KEY')
+
+    LOCATOR_URL = os.getenv('LOCATOR_URL')
+    PAYFABRIC_DEVICE_ID = os.getenv('PAYFABRIC_DEVICE_ID')
+    PAYFABRIC_PASSWORD = os.getenv('PAYFABRIC_PASSWORD')
+    PAYFABRIC_URL = os.getenv('PAYFABRIC_URL')
+
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+
+    SOAP_PIN = os.getenv('SOAP_PIN')
+    SOAP_VERSION = os.getenv('SOAP_VERSION')
+    SOAP_USER = os.getenv('SOAP_USER')
+    SOAP_PASS = os.getenv('SOAP_PASS')
+
+    APP_LINK = os.getenv('APP_LINK')
+    BILLING_EMAIL = os.getenv('BILLING_EMAIL')
+
+    GROUND_FUEL_SURCHARGE_URL = os.getenv('GROUND_FUEL_SURCHARGE_URL')
+    PRIORITY_FUEL_SURCHARGE_URL = os.getenv('PRIORITY_FUEL_SURCHARGE_URL')

@@ -1,0 +1,35 @@
+/* IE8+ should support this; Other browsers support is spottily available or on its way */
+@page {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+html {
+    width: 5in;
+    /*max-width: 5in;*/
+    /*overflow: auto;*/
+}
+
+.size_lsoplbl {
+    width: 60%;
+}
+
+.lblcontainer {    
+    /*max-width: 5in;*/
+    /*overflow: auto;*/
+    display: block;  
+}
+
+.combinedlabel .lblcontainer {
+    padding-top: .08in;
+}
+
+.ielte8 .combinedlabel .lblcontainer {
+    padding-top: .11in;
+}
+
+.rcptstack {
+    height: 4in;
+}

@@ -1,0 +1,34 @@
+/* IE8+ should support this; Other browsers support is spottily available or on its way */
+@page {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0
+    }
+html {
+    width: 1755px;
+    max-width: 1755px;
+    overflow: auto
+    }
+.lblcontainer {
+    /* next 2 lines seem to be causing problems in some IE installs, however chrome doesn't quite work on flo's system without them */
+    max-width: 1755px;
+    overflow: hidden;
+    display: block
+    }
+.combinedlabel .lblcontainer {
+    height: 1080px
+    }
+.ielte8 .combinedlabel .lblcontainer {
+    height: 1080px;
+    overflow: visible;
+    display: inline
+    }
+/* this rule was written for chrome, the phantom rotated text was still pushing the total size to make one label two pages */
+.combinedlabel {
+    overflow: hidden;
+    height: 1080px
+    }
+.rcptstack {
+    height: 1080px
+    }

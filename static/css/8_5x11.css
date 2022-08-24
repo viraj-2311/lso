@@ -1,0 +1,30 @@
+/* center 8.5x11 single labels */
+.size_85x11 {
+    padding-left: 1.50in;    
+}
+
+/* partner combined label center */
+.outer_wrapper {
+    padding-left: 1.50in !important;    
+} 
+
+#pnlLabels {
+    padding-top: 0.25in;
+}
+ 
+.partnerprint .size_lsoplbl {
+    padding-left: 0.20in;
+}
+
+.combinedlabel {
+    float: left;
+}
+
+.pic_container {
+    padding-left: 0.75in;
+    clear: both;
+}
+
+.rcptstack {
+    height: 4in;
+}

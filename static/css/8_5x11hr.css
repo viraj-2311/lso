@@ -1,0 +1,24 @@
+/* center 8.5x11 single labels */
+.size_85x11 {
+    padding-left: 405px
+    }
+/* partner combined label center */
+.outer_wrapper {
+    padding-left: 405px !important
+    }
+#pnlLabels {
+    padding-top: 68px
+    }
+.partnerprint .size_lsoplbl {
+    padding-left: 54px
+    }
+.combinedlabel {
+    float: left
+    }
+.pic_container {
+    padding-left: 203px;
+    clear: both
+    }
+.rcptstack {
+    height: 1080px
+    }

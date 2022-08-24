@@ -1,0 +1,904 @@
+/* Start Label CSS */
+
+/* ======== basic element ======== */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    color: #000;
+} 
+
+p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 8pt;
+}
+
+/* ======== end of basic element ======== */
+
+/* This should help the browser to properly compute the height when there are floats */
+/* Place a div with this class after the two floats */
+.heightfix {
+    width: 100%;
+    height: 1px;
+    clear: both;
+}
+
+/* the clearfixes were causing some installs of some browsers to puke */
+/* there is absolutely one needed on a partner 8.5x11 so this should only get called in that context */
+.partnerprint .partner85heightfix {
+    clear: both;
+}
+
+.size_85x11 .partner85heightfix {
+    clear: both;
+}
+
+
+/* ======== lblcontainer ======== */
+
+.lblcontainer {
+    background: #fff;
+}
+
+.ielte8 {
+    width: 100%;
+    height: 100%;
+}
+
+/* ======== end of container ======== */
+
+
+/* ======== receipt ======== */
+
+.receipt {
+    color: #000;
+    /*writing-mode: tb-rl;*/
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    white-space: nowrap;
+    display: block;
+    bottom: 0;
+    width: 3.5in;
+    height: 2.389in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 8pt;
+    font-weight: normal;
+    padding: 0.181in 0.139in 0 0.139in;
+    position: relative;
+    top: 0.89in;
+    right: 4.66in;
+    margin-left: 0.25in;
+    box-sizing: content-box;
+}
+
+/* combined label needed adjusting to make it print properly on chrome, this should override for combine label only */
+.combinedlabel .receipt {
+    top: -2.70in;
+    right: 1.35in;
+}
+
+/* IE 8 and below rules */
+.ielte8 .receipt {
+    width: 1.389in;
+    height: 3.75in;
+    top: 7px;
+    right: 9px;
+    /* IE9 syntax (untested)    
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+    -ms-transform: rotate(270deg);
+    */
+    /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); */
+    display: none;
+
+}
+
+/* IE 8 and below rules */
+.ielte8 .combinedlabel .receipt {
+    width: 1.389in;
+    height: 3.75in;
+    top: 7px;
+    right: 9px;
+    /* IE9 syntax (untested)    
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+    -ms-transform: rotate(270deg);
+    */
+    /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2); */
+    display: none;
+
+}
+
+/* The PDF library won't render the rotated text */
+.pdflabel .receipt {
+    display: none;
+}
+
+.left_side {
+    float: left;
+    padding-right: 0.111in;
+    box-sizing: unset;
+}
+
+.left_side_A {
+    float: left;
+    width: 0.681in;
+}
+
+.left_side_B {
+    float: right;
+    width: 1.3in;
+}
+
+.right_side {
+    float: right;
+}
+
+.right_side_A {
+    float: left;
+    width: 0.792in;
+}
+
+.right_side_B {
+    float: right;
+    width: 0.583in;
+}
+
+/* the rcpt images are normally not shown */
+.rcptstack {
+    /* the padding pushes the other content down */
+    /*padding: 0.181in 0.139in 0 0.139in;*/
+    /*position:relative;*/
+    width: 1.389in;
+    display: none;
+    float: left;
+}
+
+/* IE needs the rcpt images */
+.ielte8 .rcptstack {
+    padding-top: 0.175in;
+    padding-left: 0.103in;
+    height: 3.542in;
+    display: inline;
+}
+
+/* the PDF library needs the rcpt images */
+.pdflabel .rcptstack {
+    padding-top: 0.175in;
+    padding-left: 0.103in;
+    height: 3.542in;
+    display: inline;
+}
+
+.rcptstack div {
+    float: left;
+}
+
+.rcptparam {
+    display: none;
+}
+
+/* ======== end of receipt ======== */
+
+/* ======== label ======== */
+
+.label {
+    height: 3.602in;
+    width: 4.583in;
+    padding: 0.139in 0.208in;
+}
+
+.label_4x65 {
+    position: static;
+    padding: 0.06in 0.205in 0in 0in;
+    top: auto;
+    left: auto;
+    float: right;
+}
+
+/* height fix div under those two divs
+   chrome has a bug where if you have a float left and a float right, it won't do the correct
+   layout height unless there's content in between.
+code to cut jpegs is in lsopartnerservices - make sure to copy whole functions because you have be very
+careful with memory leaks.
+*/
+
+.size_lsoplbl {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+.label_4x5 {
+    height: 3.6595in;
+    width: 4.583in;
+    padding: 0.1078in 0.208in;
+}
+
+.size_lsoplbl .label_4x5 {
+    height: 2.181in;
+    /*width: 2.653in;*/
+    width: 2.840in;
+    padding: 0;
+}
+
+.ielte8 .label_4x65 {
+    position: static;
+    padding: 0.1in 0.205in 0in 0in;
+    top: auto;
+    left: auto;
+    float: right;
+}
+
+.ielte8 .label_4x5 {
+    position: static;
+    top: auto;
+    left: auto;
+}
+
+.label_top {
+    height: 0.722in;
+    width: 4.583in;
+    padding-bottom: 0.104in;
+}
+
+.size_lsoplbl .label_top {
+    /*height: 0.403in;*/
+    height: 0.528in;
+    width: 2.840in;
+    padding-bottom: 0.05in; /*est*/
+}
+
+.logo {
+    float: left;
+    height: 0.708in;
+    width: 1.280in;
+}
+
+.size_lsoplbl .logo {
+    float: left;
+    height: 0.403in;
+    width: 0.739in;
+}
+
+
+.ielte8 .logo {
+}
+
+.LSO_airbill_and_info {
+    float: right;
+    width: 3.291in;
+}
+
+.size_lsoplbl .LSO_airbill_and_info {
+    float: right;
+    /*width: 1.889in;*/
+    width: 2.076in;
+}
+
+.LSO_airbill_no {
+    float: left;
+    margin: 0 auto;
+    width: 2.132in;
+    height: 0.722in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 9pt;
+    line-height: 14pt;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.size_lsoplbl .LSO_airbill_no {
+    float: left;
+    margin: 0 auto;
+    width: 1.236in;
+    height: 0.403in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 8pt;
+    line-height: 8pt;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.LSO_airbill_no img {
+    width: 186px;
+    height: 45px;
+}
+
+.size_lsoplbl .LSO_airbill_no img {
+    width: 1.5in;
+    height: 0.375in;
+}
+
+.dupwarn {
+    display: block;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* The duplicate text must be much smaller on the tiny LSO label */
+.partnerprint .dupwarn {
+    font-size: 6pt;
+}
+
+.LSO_info {
+    float: right;
+    padding-top: 0.097in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 8pt;
+    color: #000;
+    text-decoration: none;
+    text-align: right;
+    width: 1.139in;
+}
+
+/* Used to change styled of LSO_info if there is a duplicate message */
+.dupabove {
+    padding-top: 0;
+}
+
+.size_lsoplbl .LSO_info {
+    float: right;
+    padding-top: 0.05in; /*est*/
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 6pt;
+    color: #000;
+    text-decoration: none;
+    text-align: right;
+    width: 0.65in;
+}
+
+.to_from_wrap {
+    clear: both;
+    width: 4.583in;
+    height: 1.4375in;
+}
+
+.size_lsoplbl .to_from_wrap {
+    clear: both;
+    /*width: 2.650in;*/
+    width: 2.840in;
+    /*height: 0.870in;*/
+    height: 0.995in;
+    margin-top: 8pt;
+}
+
+.to {
+    float: left;
+    width: 2.68in;
+    padding-right: 0.139in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 10pt;
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 0.138in;
+    font-weight: bold;
+}
+
+.size_lsoplbl .to {
+    float: left;
+    width: 1.54in;
+    padding-right: 0.07in; /*est*/
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 8pt;
+    color: #000;
+    text-decoration: none;
+    padding-bottom: 0.07in; /*est*/
+    font-weight: bold;
+}
+
+.from {
+    float: right;
+    width: 1.667in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 7pt;
+    text-decoration: none;
+}
+
+.size_lsoplbl .from {
+    float: right;
+    width: 0.967in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 6pt;
+    text-decoration: none;
+}
+
+.service_type_wrap {
+    clear: both;
+    width: 4.583in;
+    height: 0.75in;
+    border-width: 0.022in 0;
+    border-style: solid;
+    border-color: #000;
+}
+
+.size_lsoplbl .service_type_wrap {
+    clear: both;
+    /*width: 2.653in;*/
+    width: 2.840in;
+    height: 0.403in;
+    border-width: 0.014in 0; /*est*/
+    border-style: solid;
+    border-color: #000;
+}
+
+.sort_code img {
+    height: 0.75in;
+}
+
+.size_lsoplbl .sort_code img {
+    height: 0.403in;
+}
+
+.service_type {
+    float: left;
+    width: 0.736in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 47pt;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+}
+
+.size_lsoplbl .service_type {
+    float: left;
+    width: 0.417in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 28pt;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 7pt;
+    margin-top: -2pt;
+}
+
+.sort_code_and_service_description_wrap {
+    float: right;
+    width: 3.847in;
+}
+
+.size_lsoplbl .sort_code_and_service_description_wrap {
+    float: right;
+    width: 2.222in;
+}
+
+.sort_code {
+    float: left;
+    width: 1.375in;
+    height: 0.75in;
+}
+
+.size_lsoplbl .sort_code {
+    float: left;
+    width: 0.653in;
+    height: 0.403in;
+}
+
+.service_description {
+    float: right;
+    /* tweaked this size down because when HR labels were introduced, it broke layout when scaled up */
+    width: 2.370in;
+    height: 0.75in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 9pt;
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 0.097in;
+    padding-top: 0.111in;
+}
+
+.size_lsoplbl .service_description {
+    float: right;
+    width: 1.375in;
+    height: 0.403in;
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 7pt;
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: left;
+    padding-left: 0.045in; /*EST*/
+    padding-top: 0.05in; /*EST*/
+    margin-top: -1pt;
+}
+
+.service_description_title {
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.size_lsoplbl .service_description_title {
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 7pt;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.bottom_info {
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 8pt;
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: left;
+    padding-top: 0.103in;
+}
+
+.size_lsoplbl .bottom_info {
+    font-family: Arial, Helvetica, Verdana, sans-serif;
+    font-size: 6pt;
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: left;
+    padding-top: 0.0625in;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+/* partner label classes */
+.label_4x5 {
+    display: inline;
+    float: left;
+}
+
+.partner8511 {
+    padding-left: 0.139in;
+    display: inline;
+    float: left;
+}
+
+.partner8511 img {
+    width: 4in;
+    height: 2.75in;
+}
+
+.partnerlbl {
+
+}
+
+.pagebrk {
+    page-break-after: always;
+}
+
+.pagebrkbefore {
+    page-break-before: always;
+    break-before: always;
+    -webkit-region-break-before: always;
+    page-break-inside: avoid;
+}
+
+
+#imgrcpt_left_A {
+    max-width: 135;
+    width: 100%;
+}
+
+#imgrcpt_left_B {
+    max-width: 135;
+    width: 100%;
+}
+
+#imgrcpt_right_A {
+    max-width: 135;
+    width: 100%;
+}
+
+#imgrcpt_right_B {
+    max-width: 135;
+    width: 100%;
+}
+
+/* ======== end of label ======== */
+
+/* End Label CSS */
+
+/* instructions control CSS */
+.pic_container {
+    padding-top: 0.625in;
+    left: 0;
+    display: block;
+}
+
+/* partner labels print slightly differently */
+.partnerprint .pic_container {
+    padding-top: 1.625in;
+}
+
+.pic_container span {
+    font-size: 8pt;
+}
+
+/* ie8 HR not otherwise visible without this rule */
+.ielte8 .pic_foldline {
+    border: 1px solid #363636;
+}
+
+/*ontrac combined label */
+
+.outer_wrapper {
+    width: 4.6in;
+    height: 3.65in;
+    padding: 0.05in 0.05in;
+    float: right;
+}
+
+.left_col {
+    float: left;
+    width: 3.05in;
+    padding-right: 0.24in;
+}
+
+.right_col {
+    float: right;
+    width: 1.3in;
+}
+
+.row1_wrapper, .row2_wrapper {
+    width: 4.6in;
+    border-bottom-width: 0.015in;
+    border-bottom-style: solid;
+    border-bottom-color: #000;
+}
+
+.row1_wrapper {
+    height: 0.95in;
+    padding-bottom: 0.05in;
+}
+
+.row2_wrapper {
+    /* 4x5 was printing on 2 labels needed to take in space */
+    height: 1.02in;
+    padding: 0.05in 0;
+}
+
+.row3_wrapper {
+    width: 4.6in;
+    height: 1.133in;
+    padding: 0.07in 0;
+}
+
+.row3_wrapper .right_col img {
+    width: 88px;
+    height: 45px;
+}
+
+.row#_wrapper .left_col img {
+    width: 404px;
+    height: 107px;
+}
+
+.row4_wrapper {
+    height: 0.2in;
+    float: left;
+    padding-top: 4px;
+}
+
+.shipped_by, .label {
+    font-family: "Helvetica Neue Condensed Bold", Arial Narrow;
+    font-size: 0.8em;
+    color: #000;
+    font-weight: bold;
+}
+
+.senders_info {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 12px;
+}
+
+.phone_label {
+    font-family: "Helvetica Neue Condensed", Arial Narrow;
+    font-size: 0.8em;
+    color: #000;
+    font-weight: bold;
+}
+
+.senders_phone {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.padding-top {
+    padding-top: 0.05in;
+}
+
+.print_time_date {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 25px;
+}
+
+.receivers_info {
+    font-family: "Helvetica Neue Condensed", Arial Narrow;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 16px;
+    padding-top: 0.1in;
+}
+
+.location_code_from {
+    font-family: "Helvetica Neue Condensed Bold", Arial Narrow;
+    font-size: 3.3em;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 41px;
+}
+
+.partner_service_type {
+    font-family: "Helvetica Neue Condensed Bold", Arial Narrow;
+    font-size: 2em;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 25px;
+}
+
+.lso_logo {
+    font-family: "Helvetica Neue Condensed Bold", Arial Narrow;
+    font-size: 2.55em;
+    color: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-top: 0.11in;
+    line-height: 40px;
+}
+
+.lso_phone {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 10px;
+}
+
+.tracking {
+    font-family: "Helvetica Neue Condensed", "Arial Narrow";
+    font-size: 0.8em;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.tracking_number, .ref_number {
+    font-family: "Helvetica Neue Condensed", "Arial Narrow";
+    font-size: 0.95em;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.weight_pieces {
+    font-family: "Helvetica Neue Condensed", Arial Narrow;
+    font-size: 1em;
+    color: #000;
+    line-height: 18px;
+}
+
+.signature_required {
+    font-family: "Helvetica Neue Condensed", "Arial Narrow";
+    font-size: 1em;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 0.04in;
+}
+
+.ontrac_barcode {
+    height: 95px;
+    width: 297px;
+    padding-bottom: 3px;
+}
+
+.ontrac_service_type {
+    font-family: "Helvetica Neue Condensed", "Arial Narrow";
+    font-size: 0.95em;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.reflabel {
+    font-weight: bold;
+}
+
+.ontrac_contact, .ontrac_contact_number {
+    font-family: "Helvetica Neue Condensed", "Arial Narrow";
+    font-size: 0.95em;
+    color: #000;
+    font-weight: bold;
+}
+
+.ref_number, .ontrac_service_type, .ontrac_contact {
+    /* combined label last line was take 2 lines */
+    padding-right: 0.17in;
+}
+
+/* classes to make billingref3 print smaller when it is long to keep everything on one label */
+.bref3sizec {
+    font-size: 0.6em;
+}
+
+.bref3sizeb {
+    font-size: 0.75em;
+}
+
+.size_4x65 .lblcontainer{
+max-width: 6.5in;
+}
+.size_4x5 .lblcontainer{
+max-width: 5in;
+}
+.sort_code img{
+height: 0.72in;
+}
+.size_4x65, .size_4x5{
+display: flex;
+-webkit-box-pack: start;
+justify-content: flex-start;
+}
+
+@media print{
+.size_4x65, .size_4x5{
+   display: flex;
+   -webkit-box-pack: end;
+   justify-content: flex-end;
+   flex-wrap: wrap;
+}
+.size_4x65.print_plain_paper, .size_4x5.print_plain_paper{
+   display: flex;
+   -webkit-box-pack: start !important;
+   justify-content: flex-start !important;
+   flex-wrap: wrap;
+}
+.lblcontainer{
+    -moz-transform: scale(1.39);
+    -moz-transform-origin: 100% 100%;
+    -o-transform: scale(1.39);
+    -o-transform-origin: 100% 100%;
+    -webkit-transform: scale(1.39);
+    -webkit-transform-origin: 100% 100%;
+    transform: scale(1.39);
+    transform-origin: 100% 100%;
+}
+.print_plain_paper .lblcontainer{
+    -moz-transform: scale(1);
+    -moz-transform-origin: 100% 100%;
+    -o-transform: scale(1);
+    -o-transform-origin: 100% 100%;
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 100% 100%;
+    transform: scale(1);
+    transform-origin: 100% 100%;
+}
+.receipt{
+margin-right: -87px;
+}
+}
+
+/* End instructions control CSS */
+

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airbill No. {{ data.AirbillNo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/4x5hr.css', _external=True) }}">
+    {% if data.LabelSize == 1 %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/4x5.css', _external=True) }}">
+    {% else %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/4x6_5.css', _external=True) }}">
+    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/weblabels.css', _external=True) }}">
+   <style>
+      {% if data.LabelSize != 0 %}
+      @media print{
+         .pnlLabels{
+            -webkit-transform: rotate( 180deg);
+            -moz-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+         }
+         .lbl-container{
+
+         }
+      }
+      {% endif %}
+
+   </style>
+</head>
+<body>
+{% if data.SignatureRequirementText %}
+    {% set sig_req = data.SignatureRequirementText %}
+{% endif %}
+<div class="pnlLabels">
+    {% if data.LabelSize == 1 %}
+        <div class="size_4x5">
+    {% else %}
+        {% if data.LabelSize == 0 %}
+        <div class="size_4x65 print_plain_paper">
+        {% else %}
+        <div class="size_4x65">
+        {% endif %}
+    {% endif %}
+        {% if data.LabelSize == 0 %}
+        <div class="lblcontainer print_plain_paper" style="display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; flex-direction: row-reverse;">
+        {% else %}
+        <div class="lblcontainer" style="display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: reverse; flex-direction: row-reverse;">
+        {% endif %}
+            {% if data.LabelSize == 1 %}
+                <div class="label_4x5" style="float: none;width: 100%;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;padding: 15px 15px 15px 25px;">
+            {% else %}
+                <div class="label_4x65" style="width: 100%; float: none;width: 100%;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;padding: 15px 15px 15px 24px;/* margin-right: -9px; */">
+            {% endif %}
+        <div class="label_top">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/LSO_logo_tiny_lbl.gif', _external=True) }}"
+                     alt="lso logo"/>
+            </div>
+            <div class="LSO_airbill_and_info">
+                <div class="LSO_airbill_no"><img alt="barcode"
+                                                 src="{{ url_for('static', filename=data.AirbillNo+'.svg', _external=True) }}"/><br/>
+                    Airbill No. {{ data.AirbillNo }}<br/>
+                    {% if sig_req %}
+                        <strong>*** {{ sig_req }} ***</strong>
+                    {% endif %}
+                </div>
+                <div class="LSO_info"> LSO<br/> 1-800-800-8984<br/> www.lso.com</div>
+            </div>
+        </div>
+
+        <div class="to_from_wrap" style="width: 100%;-webkit-box-flex: 1;flex: 1 1 0%;display: flex; padding-top: 0">
+            <div class="to" style="
+                     width: 100%;
+                     ">
+                SHIP TO:<br/>
+                {{ data.ToAttnName }}<br/>
+                {{ data.ToCoName }}<br/>
+                {{ data.ToAddress1 }}<br/>
+                {% if data.ToAddress2 %}
+                    {{ data.ToAddress2 }}<br/>
+                {% endif %}
+                {{ data.ToCity }}, {{ data.ToState }} {{ data.ToZip }}<br/>
+                {{ data.ToPhone }}
+            </div>
+
+            <div class="from" style="
+                     width: 100%;
+                     ">
+                From:<br/>
+                {{ data.FromAttnName }}<br/>
+                {{ data.FromcoName }}<br/>
+                {{ data.FromAddress1 }}<br/>
+                {% if data.FromAddress2 %}
+                    {{ data.FromAddress2 }}<br/>
+                {% endif %}
+                {{ data.FromCity }}, {{ data.FromState }} {{ data.FromZip }}<br/>
+                {{ data.FromPhone }}
+            </div>
+            <div class="heightfix"></div>
+        </div>
+
+        <div class="service_type_wrap" style="width: 100%; display: flex;">
+            <div class="service_type" style="
+                     float: none;
+                     ">{{ data.ServiceType }}</div>
+            <div class="sort_code_and_service_description_wrap" style="
+                     float: none;
+                     ">
+                <div class="sort_code"><img
+                        src="{{ url_for('static', filename='images/zips/delivloc'+data.DelivLoc+'.jpg', _external=True) }}"
+                        alt="delivery city"/>
+                </div>
+                <div class="service_description">
+                    <span class="service_description_title">{{ data.MarketingName }}</span><br/>
+                    {{ data.AddlDescription1 }}<br/>
+                    {% if data.AddlDescription2 %}
+                        {{ data.AddlDescription2 }}<br/>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom_info"><span class="bold" style="padding-right:40px">Print Date: {{ data.PrintedDate }}</span>
+            Ref 3:<span></span><br/>
+            <span style="padding-right: 40px"> QuickCode: {{ data.User2 }} </span> Weight:
+            {{ data.OtherChargesOne }}lbs<br/> Ref 1: {{ data.BillingRef }} Ref 2:
+            <br/>
+        </div>
+    </div>
+            {% if data.LabelSize == 2 %}
+            <div class="receipt" style="width: 29%;min-width: 345px;height: 100%;top: 0px;margin-top: 0px;right: 0px;transform: rotate(0deg);position: relative;margin-left: 0px;padding: 0px;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;-webkit-box-pack: center;justify-content: center;-webkit-box-align: center;align-items: flex-start;margin-right: -93px;">
+                <div style="transform: rotate(-90deg);width: 339px;display: flex;">
+                <div class="left_side" style="float: none; -webkit-box-flex: 1; flex: 1 1 0%; padding-right: 50px;">
+
+                    <div class="left_side_A" style="
+                        width: auto;
+                        ">
+                    <p>Airbill:</p>
+                    <p>Service:</p>
+                    <p>Deliv Conf:</p>
+                    <p>Handling:</p>
+                    <p>Pieces:</p>
+                    <p>PO:</p><br>
+                    <p>Billing Ref:</p>
+                    </div>
+
+                    <div class="left_side_B" style="
+                        width: auto;
+                        ">
+                    <p>{{data.AirbillNo}}</p>
+                    <p>{{data.ShortName}}</p>
+                    <p>No</p>
+                    <p>${{data.HandlingFee}}</p>
+                    <p>1 of 1</p><br>
+                    <p></p><br>
+                    <p>{{data.BillingRef}}</p>
+                    </div>
+
+                </div>
+
+                <div class="right_side" style="float: none; -webkit-box-flex: 1; flex: 1 1 0%;">
+
+                    <div class="right_side_A" style="
+                        width: auto;
+                        ">
+                    <p>Weight:</p>
+                    <p>Dcld Val:</p>
+                    <p>Base Price:</p>
+                    <p>Service Chg:</p>
+                    <p>Other Fees:</p>
+                    <p>Total Chg:</p>
+                    <p>Print Date:</p>
+                    </div>
+
+                    <div class="right_side_B" style="
+                        width: auto;
+                        ">
+                    <p>Unavailable</p>
+                    <p>${{data.DeclaredValue}}</p>
+                    <p>Unavailable</p>
+                    <p>${{data.EstimatedServiceCharge}}</p>
+                    <p>${{data.EstimatedOtherChargesOne}}</p>
+                    <p>${{data.EstimatedTotalCharge}}</p>
+                    <p>{{data.PrintedDate}}</p>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% if data.LabelSize == 0 %}
+    <tr>
+    <td width="100%" colspan="3" valign="center">
+        <hr>
+    </td>
+</tr>
+    <tr>
+    <td colspan="3" align="center" valign="bottom" height="20">
+        <font face="Arial" size="1">Fold on above line and place shipping label in pouch on
+            package. Please be sure the barcodes and addresses can be read and scanned.
+        </font>
+    </td>
+    </tr>
+    <tr>
+        <td height="40" colspan="3">
+            &nbsp;<br>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" align="center" valign="bottom">
+            <font face="Arial" size="1">Shipping Instructions</font>
+        </td>
+    </tr>
+    <tr>
+        <td height="20" colspan="3">
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" width="100%">
+            <table border="0" cellpadding="1" cellspacing="0" id="Table11">
+                <tr>
+                    <td width="5%" valign="top" align="right">
+                        <font face="Arial" size="2"><b>1.&nbsp;&nbsp; </b></font>
+                    </td>
+                    <td>
+                        <font face="Arial" size="2">Fold this page along the horizontal line above. </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="15%" valign="top" align="right">
+                        <font face="Arial" size="2"><b>2.&nbsp;&nbsp; </b></font>
+                    </td>
+                    <td>
+                        <font face="Arial" size="2">Place this Airbill in the shipping label pouch on the package
+                            you are shipping. Please be sure the barcodes and addresses can be read and scanned.
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="15%" valign="top" align="right">
+                        <font face="Arial" size="2"><b>3.&nbsp;&nbsp; </b></font>
+                    </td>
+                    <td>
+                        <font face="Arial" size="2">To locate a drop box near you, click on <b>Find Drop Box</b>
+                            from the home page main menu. </font>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="15%" valign="top" align="right">
+                        <font face="Arial" size="2"><b>4.&nbsp;&nbsp; </b></font>
+                    </td>
+                    <td>
+                        <font face="Arial" size="2">To schedule a pickup, click on <b>Request Pickup</b>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <font face="Arial" size="1"><b>WARNING:</b> Use only the printed original label for
+                shipping. Using a photocopy of this label for shipping purposes is fraudulent and
+                could result in additional billing charges, along with the cancellation of your
+                Lone Star Overnight account number.<br>
+                <b>LIMIT OF LIABILITY:</b> We are not responsible for claims in excess of $100 for
+                any reason unless you: 1) declare a greater value (not to exceed $25,000); 2) pay
+                an additional fee; 3) and document your actual loss in a timely manner. We will
+                not pay any claim in excess of the actual loss. We are not liable for any special
+                or consequential damages. Additional limitations of liability are contained in our
+                current Service Guide. If you ask us to deliver a package without obtaining a delivery
+                signature, you release us of all liability for claims resulting from such service.
+                NO DELIVERY SIGNATURE WILL BE OBTAINED FOR 8:30 AM DELIVERIES OR RESIDENTIAL DELIVERIES.
+            </font>
+        </td>
+    </tr>
+{% endif %}
+</body>
